@@ -1,6 +1,9 @@
 package osutil
 
-import "io/ioutil"
+import (
+	"io/ioutil"
+	"strings"
+)
 
 func getOSRelease() (map[string]string, bool) {
 	osmap := make(map[string]string)
@@ -32,7 +35,7 @@ func GetDist() Distro {
 	var detect string
 	var release string
 
-	osmap, soMapExists := getOSRelease()
+	osmap, osMapExists := getOSRelease()
 
 	if osMapExists {
 		name := osmap["NAME"]
